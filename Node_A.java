@@ -14,22 +14,15 @@ public class Node_A{
 		
 		//connecting to other node
 		Socket s = new Socket(host_ip,Integer.parseInt(port_no));
+		System.out.println("Connection Established with node C");
 
-		BufferedReader systemBuffer = new BufferedReader(new InputStreamReader(System.in));
-		BufferedReader socketBuffer = new BufferedReader(new InputStreamReader(s.getInputStream()));
-		OutputStream out = s.getOutputStream();
-		PrintWriter pw = new PrintWriter(out,true);
-		String requestMessage, serverMessage;
+		//for message reading and sending
+		System.out.println("Enter the message to be sent!");
+		String msg_transmit=sc.nextLine();
+		DataOutputStream dout=new DataOutputStream(s.getOutputStream());
+		dout.writeUTF(msg_transmit);
+		dout.flush();
+		dout.close();
 
-		System.out.println("Connection established");
-
-		while(true){
-			System.out.println("Client : ");
-			requestMessage = systemBuffer.readLine();
-			pw.println(requestMessage);
-			if((serverMessage = socketBuffer.readLine()) != null){
-				System.out.println("Server : " + serverMessage);
-			}
-		}
 	}
 }
