@@ -9,10 +9,12 @@ public class Node_C {
 		int port_no=sc.nextInt();
 
 		ServerSocket ss=new ServerSocket(port_no);
-		Socket s=ss.accept();
 		System.out.println("--Node C online--");
+		Socket s=ss.accept();
+		System.out.println("--Accepted Connection--");
 		
-		DataInputStream dis=new DataInputStream(s.getIntputStream());
+		//BufferedReader buff_msg=new BufferedReader(new InputStreamReader(s.getInputStream()));
+		DataInputStream dis=new DataInputStream(s.getInputStream());
 		String msg_received=(String)dis.readUTF();
 		System.out.println("Message Received:\n"+msg_received);
 

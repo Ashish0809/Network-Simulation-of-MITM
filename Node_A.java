@@ -8,9 +8,9 @@ public class Node_A{
 		Scanner sc=new Scanner(System.in);
 		
 		System.out.print("Host IP: ");
-		String host_ip=sc.next();
+		String host_ip=sc.nextLine();
 		System.out.print("Port Number: ");
-		String port_no=sc.next();
+		String port_no=sc.nextLine();
 		
 		//connecting to other node
 		Socket s = new Socket(host_ip,Integer.parseInt(port_no));
